@@ -15,4 +15,4 @@ Dataset:
 The dataset contains water pollution metrics from various sources in China, with labeled pollution levels as the target variable.
 
 Link Deployment:
-https://classificationwaterpollutionmodel-bhq7abxva3ocvppzdlhmha.streamlit.app/
+https://classificationwaterpollutionmodel-jhdtfnbupibaetukw2bod4.streamlit.app/
