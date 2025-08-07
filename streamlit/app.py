@@ -7,9 +7,24 @@ from sklearn.preprocessing import StandardScaler
 # Judul aplikasi
 st.title("Water Quality Prediction")
 
-# Load model dan scaler
-model = pickle.load('model.pkl')
-scaler = pickle.load('scaler.pkl')  # kalau pakai scaler
+# Function untuk load model dan scaler
+@st.cache_resource
+def load_model():
+    try:
+        with open('model.pkl', 'rb') as f:
+            model = pickle.load(f)
+        with open('scaler.pkl', 'rb') as f:
+            scaler = pickle.load(f)
+        return model, scaler
+    except FileNotFoundError:
+        st.error("⚠️ File model tidak ditemukan. Pastikan file 'model.pkl' dan 'scaler.pkl' tersedia.")
+        return None, None
+    except Exception as e:
+        st.error(f"⚠️ Error loading model: {str(e)}")
+        return None, None
+
+# Initiate model dan scaler
+model, scaler = load_model()
 
 st.title("Prediksi Kualitas Air Berdasarkan Parameter")
 
